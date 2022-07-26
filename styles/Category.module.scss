@@ -29,6 +29,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          cursor: pointer;
         }
 
         .item_info {
@@ -70,10 +71,6 @@
     height: 100%;
     object-fit: contain;
   }
-}
-
-.text_tertiary.product_category:hover {
-  text-decoration: underline;
 }
 
 .stack {

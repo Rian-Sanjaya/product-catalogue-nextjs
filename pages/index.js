@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import axios from 'axios';
 import { firstWordsToUpperCase } from '../helpers/stringFunction';
 import styles from  '../styles/HomePage.module.scss';
@@ -19,16 +20,18 @@ export default function HomePage({ data }) {
               <div key={product.id} className={`${styles.item} ${idx === 1 || idx === 3 ? styles.large : ''}`}>
                 <div className={styles.item_inner}>
                   <div className={styles.item_card}>
-                    <a href="#" className={styles.item_img_wrap}>
+                    <div className={styles.item_img_wrap}>
                       <div className={styles.img_spacer}>
-                        <img src={`/images/${product.pic_default}`} alt="mx mechanical" />
+                        <img src={`/images/${product.pic_default}`} alt={product.name} />
                       </div>
-                    </a>
+                    </div>
                     <div className={styles.item_info}>
                       <div className={`${styles.stack} ${styles.horizontal} ${styles.bulleted}`}>
                         <span className="text_tertiary">{product.brand}</span>
                         <span className="text_tertiary">
-                          <a className={`${styles.text_tertiary} ${styles.product_category}`} href="#">{firstWordsToUpperCase(product.category)}</a>
+                          <Link href={`/${product.category}`}>
+                            <a className={`${styles.text_tertiary} ${styles.product_category}`}>{firstWordsToUpperCase(product.category)}</a>
+                          </Link>
                         </span>
                       </div>
                       <div className={`${styles.stack} ${styles.horizontal}`}>

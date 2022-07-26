@@ -35,17 +35,17 @@ export default function ProductCategory({ data }) {
             products && products.map((product, idx) => (
               <div key={product.id} className={`${styles.item} ${largeClassOption(idx)}`}>
                 <div className={styles.item_inner}>
-                  <div className={styles.item_card}>
-                    <a href="#" className={styles.item_img_wrap}>
+                  <div className={styles.item_card} onClick={() => router.push(`/${product.category}/${product.id}`)}>
+                    <div className={styles.item_img_wrap}>
                       <div className={styles.img_spacer}>
-                        <img src={`/images/${product.pic_default}`} alt="mx mechanical" />
+                        <img src={`/images/${product.pic_default}`} alt={product.name} />
                       </div>
-                    </a>
+                    </div>
                     <div className={styles.item_info}>
                       <div className={`${styles.stack} ${styles.horizontal} ${styles.bulleted}`}>
                         <span className="text_tertiary">{product.brand}</span>
                         <span className="text_tertiary">
-                          <a className={`${styles.text_tertiary} ${styles.product_category}`} href="#">{firstWordsToUpperCase(product.category)}</a>
+                          <span className={`${styles.text_tertiary}`}>{firstWordsToUpperCase(product.category)}</span>
                         </span>
                       </div>
                       <div className={`${styles.stack} ${styles.horizontal}`}>
