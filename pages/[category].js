@@ -8,10 +8,24 @@ export default function ProductCategory({ data }) {
   const [products, setProducts] = useState(null);
   const router = useRouter();
   const { category } = router.query;
-
+  
   useEffect(() => {
     setProducts(data);
   }, [data])
+
+  const largeClassOption = (idx) => {
+    if (category === 'tech') {
+      if (idx === 1 || idx === 3) {
+        return styles.large;
+      }
+    } else if (category === 'lifestyle') {
+      if (idx === 0 || idx === 7) {
+        return styles.large;
+      }
+    }
+
+    return ''
+  };
 
   return (
     <>
@@ -19,7 +33,7 @@ export default function ProductCategory({ data }) {
         <div id="items" className={styles.grid}>
           {
             products && products.map((product, idx) => (
-              <div key={product.id} className={`${styles.item} ${idx === 1 || idx === 3 ? styles.large : ''}`}>
+              <div key={product.id} className={`${styles.item} ${largeClassOption(idx)}`}>
                 <div className={styles.item_inner}>
                   <div className={styles.item_card}>
                     <a href="#" className={styles.item_img_wrap}>

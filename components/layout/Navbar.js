@@ -22,6 +22,13 @@ export default function Navbar() {
             </a>
           </Link>
         </li>
+        <li>
+          <Link href="/lifestyle">
+            <a className={`text_tertiary ${router.asPath === '/lifestyle' ? styles.active : ''}`}>
+              Lifestyle
+            </a>
+          </Link>
+        </li>
       </ul>
     </header>
   )
