@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 36px;
+}
+
+ul.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+
+  &>li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+a.active {
+  color: black;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: rgba(255,255,255,0.94);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+  }
+
+  ul.nav {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 16px;
+  }
+}

@@ -6,6 +6,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   display: inline-flex;
   flex-shrink: 0;
@@ -18,8 +22,16 @@ span {
   font-size: 12px;
 }
 
-* {
-  box-sizing: border-box;
+ol, ul {
+  list-style: none;
+}
+
+.text_secondary {
+  color: rgba(0, 0, 0, 0.75)
+}
+
+.text_tertiary {
+  color: rgba(0, 0, 0, 0.4);
 }
 
 @media (prefers-color-scheme: dark) {

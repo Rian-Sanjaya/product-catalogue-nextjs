@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import { firstWordsToUpperCase } from '../helpers/stringFunction';
-import styles from  '../styles/HomePage.module.scss';
+import styles from  '../styles/Category.module.scss';
 
-export default function HomePage({ data }) {
+export default function ProductCategory({ data }) {
   const [products, setProducts] = useState(null);
+  const router = useRouter();
+  const { category } = router.query;
 
   useEffect(() => {
     setProducts(data);
@@ -49,9 +52,20 @@ export default function HomePage({ data }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
+  const res = await axios.get(`https://my-json-server.typicode.com/Rian-Sanjaya/product_list_db_json/products`);
+  const products = res.data;
+
+  const paths = products.map((product) => ({
+    params: { category: product.category }
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
   try {
-    const res = await axios.get(`https://my-json-server.typicode.com/Rian-Sanjaya/product_list_db_json/products`);
+    const res = await axios.get(`https://my-json-server.typicode.com/Rian-Sanjaya/product_list_db_json/products?category=${params.category}`);
     const data = res.data;
 
     return {
