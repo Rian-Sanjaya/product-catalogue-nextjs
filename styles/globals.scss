@@ -34,6 +34,10 @@ ol, ul {
   color: rgba(0, 0, 0, 0.4);
 }
 
+.react-star-rate.react-star-rate--ltr {
+  font-size: 18px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

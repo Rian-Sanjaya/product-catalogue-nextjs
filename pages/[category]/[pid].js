@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import StarsRating from 'react-star-rate';
 import styles from '../../styles/ProductDetail.module.scss';
 
 export default function ProductDetail({ data }) {
@@ -20,10 +21,20 @@ export default function ProductDetail({ data }) {
         </section>
         <section className={styles.product_info_wrapper}>
           <div className={styles.product_name}>{product?.name}</div>
-          <div className={product.desc}>{product?.desc}</div>
+          <div className={styles.desc}>{product?.desc}</div>
+        </section>
+        <section className={styles.product_rating_wrapper}>
+          <div>
+            <StarsRating value={product?.rating_star} disabled="true" />
+            <div style={{ display: 'inline-block', fontSize: '14px', marginLeft: '8px' }}>{`${product?.rating_star} (${product?.rating_reviews} reviews)`}</div>
+          </div>
         </section>
         <section className={styles.product_pricing_wrapper}>
-          <div className={styles.product_price}>{`$${product.price}`}</div>
+          <div className={styles.product_price}>{`$${product?.price}`}</div>
+          <div>{`4 interest-free payments of ${(product?.price / 4).toFixed(2)}`}</div>
+        </section>
+        <section className={styles.product_add_to_cart}>
+          <div><button>ADD TO CART</button></div>
         </section>
       </div>
     </>
