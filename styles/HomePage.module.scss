@@ -1,3 +1,7 @@
+.slider_container {
+  padding-top: 56px;
+}
+
 .section_header {
   display: grid;
   place-items: center;
@@ -113,6 +117,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .slider_container {
+    padding-top: 0;
+  }
+
   .section_header {
   
     a.title_box {
@@ -127,12 +135,13 @@
     min-width: 294px;
   }
 
-  .lifestyle_card_wrapper {
+  .lifestyle_content_wrapper {
     display: flex; 
     flex-direction: column;
 
     .content_card {
       margin-left: 0;
+      margin-bottom: 32px;
     }
   }
 }

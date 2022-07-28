@@ -2,9 +2,30 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import Carousel from 'react-multi-carousel';
 import { firstWordsToUpperCase } from '../helpers/stringFunction';
 import { shuffleArray } from '../helpers/arrayFunctions';
+import "react-multi-carousel/lib/styles.css";
 import styles from  '../styles/HomePage.module.scss';
+
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 600 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 600, min: 0 },
+    items: 1,
+  },
+};
 
 export default function HomePage({ data }) {
   const [products, setProducts] = useState(null);
@@ -13,7 +34,9 @@ export default function HomePage({ data }) {
   const router = useRouter();
 
   useEffect(() => {
-    setProducts(data);
+    const shuffleProds = [...data];
+    shuffleArray(shuffleProds);
+    setProducts(shuffleProds);
 
     const ts = data.filter(item => (
       item.category === 'tech'
@@ -31,6 +54,35 @@ export default function HomePage({ data }) {
   return (
     <>
       <div style={{ padding: '56px 20px' }}>
+        {
+          products && 
+          <div className={`${styles.slider_container}`}>
+            <Carousel 
+              responsive={responsive} 
+              className="carousel-container" 
+              containerClass="container-with-dots"
+              sliderClass="slider-class"
+              itemClass="item-class"
+              dotListClass="dot-list-clas"
+              showDots
+              autoPlay
+              infinite
+            >
+              {
+                products.slice(0, 9).map( (product, idx) => {
+                  return (
+                    <div key={product.id} className={`${styles.product_card}`}>
+                      <div>
+                        <img srcSet={`/images/${product?.pic_default}`} alt={product?.name} style={{ width: '100%', height: 'auto' }} />
+                      </div>
+                    </div>
+                  )
+                })
+              }
+            </Carousel>
+          </div>
+        }
+
         <div>
           <div className={`${styles.section_header}`}>
             <Link href={`/tech`}>
