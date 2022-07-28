@@ -1,6 +1,6 @@
 ### To see  the project live
 
-[Product Catalogue Assignment](https://project-assignment-web-evermos.vercel.app/tech)
+[Product Catalogue Assignment](https://project-assignment-web-evermos.vercel.app/)
 
 **Using mock api for fetch data**
 
