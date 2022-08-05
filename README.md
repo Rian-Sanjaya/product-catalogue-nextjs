@@ -1,6 +1,6 @@
 ### To see  the project live
 
-[Product Catalogue Assignment](https://project-assignment-web-evermos.vercel.app/)
+[Product Catalogue](https://project-assignment-web-evermos.vercel.app/)
 
 **Using mock api for fetch data**
 
@@ -20,7 +20,3 @@ $ yarn install
 ```bash
 $ yarn dev
 ```
-
-## Looking Forward to know the assignment score and result.
-
-## Thank You. Have a great days ahead.
