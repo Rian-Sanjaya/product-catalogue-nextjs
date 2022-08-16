@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 export default function Layout({ children }) {
   return (
@@ -8,6 +9,7 @@ export default function Layout({ children }) {
         <title>Product Catalogue</title>
       </Head>
       <Navbar />
+      <Sidebar />
       <>{children}</>
     </>
   )
