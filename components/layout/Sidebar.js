@@ -40,9 +40,7 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* <div ref={sidebar} className={`${styles.sidebar} ${styles.is_closed}`}> */}
       <div ref={sidebar} className="sidebar is_closed">
-        {/* <ul className={styles.nav}> */}
         <ul className="nav">
           <li>
             <Link href="/">
@@ -72,7 +70,7 @@ export default function Sidebar() {
         <span className="line line2"></span>
         <span className="line line3"></span>
       </div>
-      <div ref={fullscreenOvr} className="fullscreen-overlay closed"></div>
+      <div ref={fullscreenOvr} className="fullscreen-overlay closed" onClick={handleToggleSidebar}></div>
     </>
   )
 }

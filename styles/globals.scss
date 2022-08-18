@@ -117,6 +117,7 @@ $width__sidebar: 200px;
   z-index: 10001;
   background: rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  cursor: pointer;
 }
 
 .fullscreen-overlay.closed {
