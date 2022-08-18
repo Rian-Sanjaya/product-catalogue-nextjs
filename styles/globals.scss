@@ -42,9 +42,9 @@ $width__sidebar: 200px;
 .sidebar {
   width: $width__sidebar;
   position: fixed;
-  z-index: 10001;
+  z-index: 10002;
   height: 100%;
-  background-color: #ffe;
+  background-color: #fff;
   transition: .7s;
   
   &.is_closed {
@@ -55,7 +55,7 @@ $width__sidebar: 200px;
 .hamburger_menu {
   position: fixed;
   top: 20px;
-  z-index: 10001;
+  z-index: 10002;
   margin-left: $width__sidebar + 16px;
   height: 26px;
   width: 32px;
@@ -63,6 +63,7 @@ $width__sidebar: 200px;
   flex-direction: column;
   justify-content: space-between;
   transition: .7s;
+  cursor: pointer;
 
   .line {
     display: block;
@@ -107,6 +108,21 @@ $width__sidebar: 200px;
   }
 }
 
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10001;
+  background: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.fullscreen-overlay.closed {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -123,6 +139,10 @@ $width__sidebar: 200px;
   }
 
   .hamburger_menu {
+    display: none;
+  }
+
+  .fullscreen-overlay {
     display: none;
   }
 }

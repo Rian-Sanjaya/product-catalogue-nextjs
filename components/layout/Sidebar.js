@@ -7,28 +7,35 @@ export default function Sidebar() {
   const router = useRouter();
   const sidebar = useRef();
   const hamburgerBtn = useRef();
+  const fullscreenOvr = useRef();
 
-  // useEffect(() => {
-  //   const toggleBtn = document.querySelector('.hamburger_menu');
-  //   const sidebar = document.querySelector('.sidebar');
+  useEffect(() => {
+    function handleResize() {
+      // console.log('width: ', window.innerWidth);
+      // console.log('height: ', window.innerHeight);
+      if (window.innerWidth >= 768) {
+        hamburgerBtn.current.classList.add('is_closed');
+        sidebar.current.classList.add('is_closed');
+        fullscreenOvr.current.classList.add('closed');
+        document.body.style.overflowY = '';
+      }
+    }
 
-  //   toggleBtn?.addEventListener('click', function() {
-  //     console.log('toggleBtn: ', toogleBtn);
-  //     toggleBtn?.classList.toggle('is_closed');
-  //     sidebar?.classList.toggle('is_closed');
+    window.addEventListener('resize', handleResize);
 
-  //     return () => {
-  //       toggleBtn?.removeEventListener('click', function() {
-  //         toggleBtn?.classList.toggle('is_closed');
-  //         sidebar?.classList.toggle('is_closed');
-  //       })
-  //     }
-  //   })
-  // })
+    return () => window.removeEventListener('resize', handleResize);
+  }, [])
 
   const handleToggleSidebar = (e) => {
+    if (hamburgerBtn.current.classList.contains('is_closed')) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = '';
+    }
+
     hamburgerBtn.current.classList.toggle('is_closed');
-    sidebar.current.classList.toggle('is_closed')
+    sidebar.current.classList.toggle('is_closed');
+    fullscreenOvr.current.classList.toggle('closed');
   };
 
   return (
@@ -65,6 +72,7 @@ export default function Sidebar() {
         <span className="line line2"></span>
         <span className="line line3"></span>
       </div>
+      <div ref={fullscreenOvr} className="fullscreen-overlay closed"></div>
     </>
   )
 }
