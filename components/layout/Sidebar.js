@@ -44,21 +44,21 @@ export default function Sidebar() {
         <ul className="nav">
           <li>
             <Link href="/">
-              <a className={`text_tertiary ${router.asPath === '/' ? styles.active : ''}`}>
+              <a className={`text_tertiary ${router.asPath === '/' ? styles.active : ''}`} onClick={handleToggleSidebar}>
                 Home
               </a>
             </Link>
           </li>
           <li>
             <Link href="/tech">
-              <a className={`text_tertiary ${router.asPath === '/tech' ? styles.active : ''}`}>
+              <a className={`text_tertiary ${router.asPath === '/tech' ? styles.active : ''}`} onClick={handleToggleSidebar}>
                 Tech
               </a>
             </Link>
           </li>
           <li>
             <Link href="/lifestyle">
-              <a className={`text_tertiary ${router.asPath === '/lifestyle' ? styles.active : ''}`}>
+              <a className={`text_tertiary ${router.asPath === '/lifestyle' ? styles.active : ''}`} onClick={handleToggleSidebar}>
                 Lifestyle
               </a>
             </Link>
